@@ -16,6 +16,7 @@ This project implements a multi-agent simulation system where ants navigate a gr
 - **Dynamic Parameters**: Adjust learning hyperparameters (Alpha, Gamma, Epsilon) during simulation
 - **Dual Mode Execution**: Run via graphical interface (GUI) or command-line interface (CLI)
 - **Timeline System**: Save and track simulation snapshots for analysis
+- **Meta project**: Meta project that automaticaly adjust hyperparameters to optimize the simulation
 
 ### Algorithm Complexity
 
