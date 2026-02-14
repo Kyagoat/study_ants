@@ -1,0 +1,65 @@
+# Fourmis_DARONA_MEHDI
+
+
+
+## Projet Fourmis
+
+# Fourmis_DARONA_MEHDI
+
+## Projet Fourmis
+
+Projet Fourmis
+Binome1:[Mehdi] [Kylian]
+Binome2:[Darona] [Lucas]
+Langage choisi : [Rust]
+
+Liste des fonctionnalités :
+Fourmis se déplacent [Oui]
+Representation graphique du déplacement [Oui]
+2 Qtables sont présentes et maj  [Oui]
+Fourmis ramassent de la nourriture [Oui]
+Simulation s'arrete si le temps est fini  [Oui]
+Simulation s'arrete plus de nourriture [Oui] 
+Foumis peuvent mourir [Oui]
+Fourmis ressortent du nid après avoir déposés de la nourriture [Oui]
+Paramètres du programme sont des paramètres du méta programme [Oui]
+Tracage de l'historique [Oui] 
+
+Bonus éventuels réalisés :
+- Éditeur de map Graphique : Interface intégrée permettant de placer visuellement des murs, le nid, la nourriture et des zones de danger avant de lancer la simulation.
+- Paramètres Dynamiques : Possibilité de modifier la vitesse de simulation et les hyperparamètres du Q-Learning (Alpha, Gamma, Epsilon).
+- Mode Hybride : Le programme supporte un lancement avec Interface Graphique (GUI) ou en ligne de commande (CLI) via des arguments.
+
+Complexité des principaux algorithmes complexes de votre programme
+1. Simulation Principale (game_step) : [O(N^2)] Cette fonction inclut l'étape de dissipation qui parcourt toute la grille. 
+Comme vu dans le cours, deux boucles imbriquées (largeur * hauteur) engendrent une complexité [O(N^2)] par rapport à la taille du côté de la grille 
+2. Évaporation Phéromones (apply_tick) : [O(N^2)] L'algorithme parcourt chaque case via deux boucles imbriquées (for x, for y). 
+Les opérations internes (boucle fixe de 5 actions) sont des constantes multiplicatives que l'on ignore, laissant une complexité [O(N^2)].
+3. Système de Timeline (save_snapshot) : [O(N^2)] La sauvegarde réalise une copie complète (clone) de la mémoire de la grille. 
+Cela implique de visiter et dupliquer chaque case une par une, ce qui équivaut à deux boucles imbriquées dépendantes de la taille de la grille.
+4. Méta-Optimisation : [O(N)]Cet algorithme effectue une itération simple sur une liste de combinaisons de paramètres. 
+La complexité grandit proportionnellement au nombre d'éléments N dans cette liste.
+5. Q-Learning Update & Décision : [O(1)] Ces fonctions effectuent un nombre fixe d'opérations (accès direct à une case, calcul mathématique simple) 
+qui ne change pas, quelle que soit la taille de la grille ou le nombre de fourmis -> constant.
+
+Utilisation : indiquez ici comment lancer votre programme et comment modifier vos paramétres sur un ordinateur ayant téléchargé votre code (sur Ubuntu ou Windows au choix)
+
+[Explication lancement code]
+Prérequis : Avoir Rust et Cargo installés.
+Ouvrir un terminal dans le dossier racine du projet.
+
+1. Lancement Standard (GUI) :
+   Commande : `cargo run --release`
+   Cela ouvre l'interface graphique où l'on peut configurer la taille de la grille et les fourmis.
+
+2. Lancement avec Paramètres (CLI ou GUI pré-configuré) :
+   Commande : `cargo run --release -- [OPTIONS]`
+   Exemple : `cargo run --release -- --width 50 --height 50 --explorers 20`
+
+Arguments disponibles :
+   --cli : Mode sans interface graphique.
+   --width <N>, --height <N> : Dimensions.
+   --alpha <F>, --gamma <F>, --epsilon <F> : Paramètres d'apprentissage.
+
+[Système d'exploitation cible]
+Compatible Windows, Linux (Ubuntu) et MacOS grâce à la librairie graphique portable 'eframe'.
